@@ -34,6 +34,10 @@ function displayTimeLeft(seconds) {
   }${remainderSeconds}`;
   document.title = `${display} Remaining`;
   timerDisplay.textContent = display;
+  if (cancelButton.classList.contains('hidden')) {
+    console.log('hidden is true');
+    cancelButton.classList.remove('hidden');
+  }
 }
 
 function displayEndTime(timestamp) {
@@ -63,7 +67,9 @@ function cancelTimer() {
   }
 }
 
+// Event Listeners
 buttons.forEach(button => button.addEventListener('click', startTimer));
+// Get the form values on submit, passes param to timer function
 document.customForm.addEventListener('submit', function(e) {
   e.preventDefault();
   const mins = this.minutes.value;
